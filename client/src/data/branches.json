@@ -1,0 +1,19 @@
+{
+  "branches": [
+    {
+      "id": "malawi",
+      "name": "Malawi",
+      "code": "MW"
+    },
+    {
+      "id": "spain", 
+      "name": "Spain",
+      "code": "ES"
+    },
+    {
+      "id": "germany",
+      "name": "Germany", 
+      "code": "DE"
+    }
+  ]
+}

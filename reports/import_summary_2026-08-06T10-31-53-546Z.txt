@@ -1,0 +1,12 @@
+DATA IMPORT SUMMARY
+Generated: 2026-08-06T10:31:53.546Z
+==================================================
+
+LogDetail.xlsx: 1194 records imported
+WeatherData.xlsx: 0 records imported
+WeatherStationData.xlsx: 0 LogDetail + 1154 WeatherData records imported
+
+TOTAL SUMMARY:
+Total LogDetail records: 1194
+Total WeatherData records: 1154
+Total errors: 1154

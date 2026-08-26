@@ -1,0 +1,16 @@
+{
+  "name": "wingcopter-monorepo",
+  "version": "1.0.0",
+  "description": "Wingcopter Full Stack Application",
+  "private": true,
+  "scripts": {
+    "postinstall": "cd server && npm install",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "start": "cd server && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

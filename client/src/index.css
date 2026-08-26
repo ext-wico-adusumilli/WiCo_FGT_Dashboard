@@ -1,0 +1,331 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Prevent horizontal overflow */
+  html, body {
+    @apply overflow-x-hidden;
+    max-width: 100vw;
+  }
+  
+  body {
+    @apply bg-white;
+  }
+  
+  /* Dark mode styles */
+  html.dark body {
+    @apply bg-gray-900;
+  }
+  
+  #root {
+    @apply overflow-x-hidden;
+    max-width: 100vw;
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar for webkit browsers */
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-gray-800;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+
+  /* Custom dark scrollbar for all scrollable elements */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #1f2937; /* gray-800 */
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #4b5563; /* gray-600 */
+    border-radius: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #6b7280; /* gray-500 */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-corner {
+    background: #1f2937; /* gray-800 */
+  }
+}
+
+/* Global scrollbar styling for all elements */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af #f3f4f6; /* thumb track - light mode default */
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f3f4f6; /* gray-100 - light mode default */
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #9ca3af; /* gray-400 - light mode default */
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #6b7280; /* gray-500 */
+}
+
+*::-webkit-scrollbar-corner {
+  background: #f3f4f6; /* gray-100 - light mode default */
+}
+
+/* Dark mode scrollbar styles */
+html.dark * {
+  scrollbar-color: #4b5563 #1f2937; /* thumb track */
+}
+
+html.dark *::-webkit-scrollbar-track {
+  background: #1f2937; /* gray-800 */
+}
+
+html.dark *::-webkit-scrollbar-thumb {
+  background: #4b5563; /* gray-600 */
+}
+
+html.dark *::-webkit-scrollbar-thumb:hover {
+  background: #6b7280; /* gray-500 */
+}
+
+html.dark *::-webkit-scrollbar-corner {
+  background: #1f2937; /* gray-800 */
+}
+
+/* Custom styled number input spinners matching dark theme */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  position: relative;
+}
+
+/* Show spinners on hover/focus */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Create custom spinner container */
+input[type="number"] {
+  padding-right: 24px !important;
+}
+
+/* Custom spinner buttons using background image */
+input[type="number"]::-webkit-inner-spin-button {
+  width: 20px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 1;
+  cursor: pointer;
+  background: linear-gradient(to bottom, 
+    #374151 0%, 
+    #374151 49%, 
+    #4b5563 49%, 
+    #4b5563 50%, 
+    #374151 50%, 
+    #374151 100%
+  );
+  border-left: 1px solid #4b5563;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button:hover {
+  background: linear-gradient(to bottom, 
+    #4b5563 0%, 
+    #4b5563 49%, 
+    #6b7280 49%, 
+    #6b7280 50%, 
+    #4b5563 50%, 
+    #4b5563 100%
+  );
+}
+
+input[type="number"]::-webkit-inner-spin-button:active {
+  background: linear-gradient(to bottom, 
+    #3EC1C5 0%, 
+    #3EC1C5 49%, 
+    #35a9ad 49%, 
+    #35a9ad 50%, 
+    #3EC1C5 50%, 
+    #3EC1C5 100%
+  );
+}
+
+/* Add arrow indicators using SVG background */
+input[type="number"]::-webkit-inner-spin-button {
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239ca3af' d='M6 3l4 4H2z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239ca3af' d='M6 9l4-4H2z'/%3E%3C/svg%3E");
+  background-position: center 25%, center 75%;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 10px 10px, 10px 10px;
+  background-color: #374151;
+}
+
+input[type="number"]::-webkit-inner-spin-button:hover {
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d1d5db' d='M6 3l4 4H2z'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23d1d5db' d='M6 9l4-4H2z'/%3E%3C/svg%3E");
+  background-position: center 25%, center 75%;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 10px 10px, 10px 10px;
+  background-color: #4b5563;
+}
+
+/* Ensure smooth scrolling on mobile */
+@media (max-width: 640px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  /* Prevent any element from causing horizontal scroll */
+  * {
+    max-width: 100%;
+  }
+  
+  /* Allow tables to scroll horizontally within their containers */
+  table {
+    max-width: none;
+  }
+}
+
+/* ── DataIngestionPage ─────────────────────────────────────────────────── */
+
+.di-page          { @apply space-y-5; }
+
+/* cards */
+.di-card          { @apply rounded-xl border p-5 space-y-4; }
+.di-card-light    { @apply bg-white border-gray-200 shadow-sm; }
+.di-card-dark     { @apply bg-gray-800 border-gray-700; }
+
+.di-stat-card     { @apply rounded-xl border p-4 flex flex-col gap-1; }
+
+.di-config-item   { @apply rounded-lg px-3 py-3; }
+.di-config-item-dark  { @apply bg-gray-900/60; }
+.di-config-item-light { @apply bg-gray-50 shadow-sm; }
+
+/* header row */
+.di-card-header   { @apply flex items-center justify-between flex-wrap gap-3; }
+.di-section-title { @apply font-semibold flex items-center gap-2; }
+
+/* trigger button */
+.di-btn-trigger   { @apply flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-white transition disabled:opacity-50 disabled:cursor-not-allowed; }
+.di-btn-trigger-dark  { @apply bg-[#3EC1C5] hover:bg-[#35a8ac] !text-gray-900; }
+.di-btn-trigger-light { @apply bg-black hover:bg-gray-800; }
+.di-btn-trigger-busy  { @apply bg-gray-500; }
+
+/* refresh button */
+.di-btn-refresh       { @apply flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium transition; }
+.di-btn-refresh-dark  { @apply bg-gray-700 border-gray-600 text-gray-300 hover:bg-gray-600; }
+.di-btn-refresh-light { @apply bg-white border-gray-300 text-gray-700 hover:bg-gray-50; }
+
+/* alert banners */
+.di-alert-error-dark  { @apply flex items-start gap-2 p-3 rounded-lg border text-sm bg-red-900/20 border-red-800/40 text-red-400; }
+.di-alert-error-light { @apply flex items-start gap-2 p-3 rounded-lg border text-sm bg-red-50 border-red-200 text-red-600; }
+.di-alert-info-dark   { @apply flex items-center gap-2 p-3 rounded-lg text-xs bg-blue-900/20 text-blue-400; }
+.di-alert-info-light  { @apply flex items-center gap-2 p-3 rounded-lg text-xs bg-blue-50 text-blue-600; }
+
+/* table wrapper */
+.di-table-wrap    { @apply rounded-xl border; }
+.di-table-wrap-dark  { @apply bg-gray-800 border-gray-700; }
+.di-table-wrap-light { @apply bg-white border-gray-200 shadow-sm; }
+
+.di-table-header  { @apply flex items-center justify-between px-5 py-3 border-b; }
+.di-table-header-dark  { @apply border-gray-700; }
+.di-table-header-light { @apply border-gray-100; }
+
+.di-thead-row-dark  { @apply bg-gray-900 backdrop-blur-sm; }
+.di-thead-row-light { @apply bg-gray-50 backdrop-blur-sm; }
+
+.di-th            { @apply px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide; }
+.di-th-dark       { @apply text-gray-400; }
+.di-th-light      { @apply text-gray-500; }
+
+/* body rows */
+.di-tr-expanded-dark  { @apply bg-gray-700/60; }
+.di-tr-expanded-light { @apply bg-gray-50; }
+.di-tr-normal-dark    { @apply border-gray-700 hover:bg-gray-700/30; }
+.di-tr-normal-light   { @apply border-gray-100 hover:bg-gray-50/70; }
+
+/* expanded detail row — no top border to avoid white line */
+.di-detail-row-dark   { @apply bg-gray-900/30; }
+.di-detail-row-light  { @apply bg-gray-50/80; }
+
+/* mini stat tiles inside detail */
+.di-mini-tile-dark    { @apply rounded-lg px-3 py-2 bg-gray-800; }
+.di-mini-tile-light   { @apply rounded-lg px-3 py-2 bg-white border border-gray-200; }
+
+/* diff section */
+.di-diff-grid     { @apply grid grid-cols-1 sm:grid-cols-2 gap-3; }
+.di-diff-box-dark  { @apply rounded-lg border border-gray-700 overflow-hidden; }
+.di-diff-box-light { @apply rounded-lg border border-gray-200 overflow-hidden; }
+.di-diff-header-flight-dark   { @apply px-3 py-1.5 text-xs font-semibold bg-purple-900/40 text-purple-300; }
+.di-diff-header-flight-light  { @apply px-3 py-1.5 text-xs font-semibold bg-purple-100 text-purple-700; }
+.di-diff-header-weather-dark  { @apply px-3 py-1.5 text-xs font-semibold bg-blue-900/40 text-blue-300; }
+.di-diff-header-weather-light { @apply px-3 py-1.5 text-xs font-semibold bg-blue-100 text-blue-700; }
+
+/* inner blob table */
+.di-blob-table-wrap-dark  { @apply rounded-lg border border-gray-700 overflow-hidden; }
+.di-blob-table-wrap-light { @apply rounded-lg border border-gray-200 overflow-hidden; }
+.di-blob-thead-dark  { @apply bg-gray-800; }
+.di-blob-thead-light { @apply bg-gray-100; }
+.di-blob-tr-dark     { @apply border-t border-gray-700; }
+.di-blob-tr-light    { @apply border-t border-gray-100; }
+
+/* pagination */
+.di-pagination        { @apply flex items-center justify-between px-5 py-3 border-t text-xs; }
+.di-pagination-dark   { @apply border-gray-700 text-gray-400; }
+.di-pagination-light  { @apply border-gray-100 text-gray-500; }
+.di-page-btn          { @apply px-3 py-1 rounded-lg border disabled:opacity-40; }
+.di-page-btn-dark     { @apply border-gray-600 hover:bg-gray-700; }
+.di-page-btn-light    { @apply border-gray-300 hover:bg-gray-50; }
+
+/* sticky tfoot */
+.di-tfoot-sticky { position: sticky; bottom: 0; z-index: 10; }
+
+/* Shimmer animation for upload progress */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
