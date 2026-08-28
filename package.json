@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "postinstall": "cd server && npm install",
+    "build": "cd client && npm run build && rm -rf ../server/public && cp -r dist ../server/public",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:client": "cd client && npm run dev",
     "dev:server": "cd server && npm run dev",
